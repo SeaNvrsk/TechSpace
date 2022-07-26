@@ -1,6 +1,7 @@
 import os
 import environ
 
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -119,6 +120,54 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            'format': '%(filename)s %(levelname)-8s %(module)s %(message)s'
+        },
+        'file': {
+            'format': '%(asctime)s %(funcName)s %(levelname)-8s %(module)s %(message)s'
+        }
+    },
+    'handlers': {
+
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'console'
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'file',
+            'filename': 'debug.log'
+        },
+        'prints': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'file',
+            'filename': 'prints.log'
+        },
+    },
+    'loggers': {
+
+        'info': {
+            'level': 'INFO',
+            'handlers': ['console', 'file']
+        },
+        'error': {
+            'level': "ERROR",
+            'handlers': ['console', 'file'],
+        },
+        'django': {
+            'handlers': ['prints'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+    }
+}
 
 AUTH_USER_MODEL = 'core.User'
 
