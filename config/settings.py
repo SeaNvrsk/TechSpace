@@ -135,7 +135,7 @@ LOGGING = {
     'handlers': {
 
         'console': {
-            'class': 'logging.StreamHandler',
+            'class': 'rich.logging.RichHandler',
             'formatter': 'console'
         },
         'file': {
@@ -153,7 +153,7 @@ LOGGING = {
     },
     'loggers': {
 
-        'info': {
+        'customLogger': {
             'level': 'INFO',
             'handlers': ['console', 'file']
         },

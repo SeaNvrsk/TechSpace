@@ -2,7 +2,7 @@ import logging
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-logger = logging.getLogger('info')
+logger = logging.getLogger('customLogger')
 
 
 @login_required(login_url="/login/")
